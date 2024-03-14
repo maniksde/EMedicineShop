@@ -120,7 +120,23 @@ const Cart = () => {
         }
     }
     useEffect(() => {
-        fetchData();
+        //fetchData();
+        setCartItem([{
+            'id':1,
+            'name':'volini',
+            'manufacturer':'volini',
+            'imageUrl':'abv',
+            'unitPrice':60,
+            'discount':5
+        },
+        {
+            'id':2,
+            'name':'dettol',
+            'manufacturer':'dettol',
+            'imageUrl':'abv',
+            'unitPrice':50,
+            'discount':3
+        }])
 
     }, [cartItem])
     return (

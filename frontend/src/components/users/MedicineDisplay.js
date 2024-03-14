@@ -32,7 +32,9 @@ import { letterSpacing } from '@mui/system';
 
 const MedicineDisplay = () => {
     //const classes = useStyles();
-    const [medicineList, setMedicineList] = useState([]);
+    const [medicineList, setMedicineList] = useState([
+        
+    ]);
     const fetchData = async () => {
         const url = baseUrl + "medicineList";
         const res = await axios.get(url);
@@ -63,7 +65,25 @@ const MedicineDisplay = () => {
 
     
     useEffect(() => {
-        fetchData();
+        //fetchData();     need to create 
+        setMedicineList([
+            {
+                'id':1,
+                'name':'volini',
+                'manufacturer':'volini',
+                'imageUrl':'abv',
+                'unitPrice':60,
+                'discount':5
+            },
+            {
+                'id':2,
+                'name':'dettol',
+                'manufacturer':'dettol',
+                'imageUrl':'abv',
+                'unitPrice':50,
+                'discount':3
+            }
+        ])
     }, [])
     return (
         <div>

@@ -42,7 +42,11 @@ const Login = ()=> {
         const url = baseUrl + "login"//?Password="+password+"&Email="+email;
         
        
-        const res = await axios.post(url ,{'Email':email,'Password':password});
+        //const res = await axios.post(url ,{'Email':email,'Password':password});
+        const res = {
+          'email' : 'manik',
+          'password' : 'manik'
+        }
         const {statusCode, statusMessage, user} = {...res.data};
         if (statusCode === 200){
             console.log({
