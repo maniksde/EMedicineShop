@@ -36,24 +36,21 @@ const Login = ()=> {
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const email = data.get('email');
-        const password = data.get('password');
-        const url = baseUrl + "login"//?Password="+password+"&Email="+email;
-        
-       
-        //const res = await axios.post(url ,{'Email':email,'Password':password});
-        const res = {
-          'email' : 'manik',
-          'password' : 'manik'
-        }
-        const {statusCode, statusMessage, user} = {...res.data};
-        if (statusCode === 200){
+        const formdata = new FormData(event.currentTarget);
+        const email = formdata.get('email');
+        const password = formdata.get('password');
+        const url = baseUrl + "login"
+        const res = await axios.post(url ,{'email':email,'password':password})
+        const {data,status,statusText} = {...res};
+
+        console.log(data)
+        if (status === 200){
+            const user=data
             console.log({
-                email: data.get('email'),
-                password: data.get('password'),
-                statusCode:statusCode,
-                statusMessage:statusMessage,
+                email: formdata.get('email'),
+                password: formdata.get('password'),
+                status:status,
+                statusText:statusText,
                 user:user
             });
             if(user.type === 'admin')
@@ -62,9 +59,8 @@ const Login = ()=> {
                 navigate("/home");
         }
         else{
-            alert(statusMessage);
+            alert(statusText);
         }
-        
     };
 
   return (

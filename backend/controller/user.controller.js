@@ -57,3 +57,17 @@ exports.registration = async(req,res) => {
     }
 }
 
+exports.login = async(req, res)=>{
+    
+    try{
+        console.log("login function called");
+        const u = req.body;
+        const result = await User.findOne(req.body);
+        
+        res.send(result)
+    }catch(error){
+        console.log("login function called");
+        res.status(500).json({ error: error.message });
+    }
+}
+
