@@ -38,8 +38,8 @@ const MedicineDisplay = () => {
     const fetchData = async () => {
         const url = baseUrl + "medicineList";
         const res = await axios.get(url);
-        if (res.data.statusCode === 200) {
-            setMedicineList(res.data.listMedicines);
+        if (res.status === 200) {
+            setMedicineList(res.data);
         } else {
             setMedicineList([]);
         }
@@ -65,16 +65,9 @@ const MedicineDisplay = () => {
 
     
     useEffect(() => {
-        //fetchData();     need to create 
-        setMedicineList([
-            {
-                'id':1,
-                'name':'volini',
-                'manufacturer':'volini',
-                'imageUrl':'abv',
-                'unitPrice':60,
-                'discount':5
-            },
+        fetchData();    // need to create 
+       /* setMedicineList([
+           
             {
                 'id':2,
                 'name':'dettol',
@@ -83,7 +76,7 @@ const MedicineDisplay = () => {
                 'unitPrice':50,
                 'discount':3
             }
-        ])
+        ])*/
     }, [])
     return (
         <div>
