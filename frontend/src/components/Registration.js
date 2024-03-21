@@ -79,7 +79,9 @@ const Registration = ()=> {
               'status':1,
               }
               const url = baseUrl + 'registration';
+              console.log(user);
               var res = await axios.post(url, user);
+              
               if (res.data.statusCode === 200){
                 navigate("/");
               }

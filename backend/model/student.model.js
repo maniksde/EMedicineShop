@@ -1,14 +1,9 @@
-const student = [
-    {
-        'name':'Manik',
-        'age':26
-    },
-    {
-        'name':'Surajit',
-        'age':26
-    }
-]
+const { mongoose } = require("mongoose");
+console.log("Mongoose version", mongoose.version);
 
-exports.getStudent = ()=> {
-    return student;
-}
+const studentSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    age: { type: Number, required: true }
+})
+
+module.exports = mongoose.model("Student",studentSchema );
